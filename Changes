@@ -1,6 +1,8 @@
 Revision history for Dist::Zilla::Plugin::Prepender
 
 {{$NEXT}}
+
+2.003     2016-11-26 03:46:22+01:00 Europe/Paris
  - fix warnings in tests caused by changes in Dist::Zilla 6 (RT#118890)
 
 2.002     2015-08-20 10:10:11+02:00 Europe/Paris
