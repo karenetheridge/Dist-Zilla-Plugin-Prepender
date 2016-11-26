@@ -11,7 +11,6 @@ use Test::More tests => 31;
 my $tzil = Dist::Zilla::Tester->from_config({
     dist_root => path(qw(t foo)),
 });
-chdir path($tzil->tempdir)->child('source');
 $tzil->build;
 
 # check module & script
