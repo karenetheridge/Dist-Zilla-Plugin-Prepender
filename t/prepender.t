@@ -4,23 +4,23 @@ use strict;
 use warnings;
 
 use Dist::Zilla::Tester;
-use Path::Class;
+use Path::Tiny;
 use Test::More tests => 31;
 
 # build fake dist
 my $tzil = Dist::Zilla::Tester->from_config({
-    dist_root => dir(qw(t foo)),
+    dist_root => path(qw(t foo)),
 });
-chdir $tzil->tempdir->subdir('source');
+chdir path($tzil->tempdir)->child('source');
 $tzil->build;
 
 # check module & script
-my $dir = $tzil->tempdir->subdir('build');
-check_top_of_file( file($dir, 'lib', 'Foo.pm'), 0 );
-check_top_of_file( file($dir, 'bin', 'foobar'), 1 );
-check_top_of_file( file($dir, 'bin', 'foobarbaz'), 1 );
+my $build_dir = path($tzil->tempdir)->child('build');
+check_top_of_file( $build_dir->child('lib', 'Foo.pm'), 0 );
+check_top_of_file( $build_dir->child('bin', 'foobar'), 1 );
+check_top_of_file( $build_dir->child('bin', 'foobarbaz'), 1 );
 
-is $tzil->slurp_file(file(qw(build t support.pl))),
+is $tzil->slurp_file(path(qw(build t support.pl))),
    "# only used during tests\nuse strict;\n1;\n",
    'file ignored according to configuration';
 
