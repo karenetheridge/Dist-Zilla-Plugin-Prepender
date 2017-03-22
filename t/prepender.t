@@ -1,12 +1,12 @@
 use strict;
 use warnings;
 
-use Dist::Zilla::Tester;
+use Test::DZil;
 use Path::Tiny;
 use Test::More tests => 31;
 
 # build fake dist
-my $tzil = Dist::Zilla::Tester->from_config({
+my $tzil = Builder->from_config({
     dist_root => path(qw(t foo)),
 });
 $tzil->build;
