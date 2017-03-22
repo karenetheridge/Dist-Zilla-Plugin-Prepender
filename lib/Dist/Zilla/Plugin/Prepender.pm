@@ -20,19 +20,19 @@ has copyright => (
     default    => 1,
 );
 has _lines => (
-    is         => 'ro',
     lazy       => 1,
-    auto_deref => 1,
     isa        => 'ArrayRef[Str]',
     init_arg   => 'line',
+    traits     => ['Array'],
+    handles    => { _lines => 'elements' },
     default    => sub { [] },
 );
 has _skips => (
-    is         => 'ro',
     lazy       => 1,
-    auto_deref => 1,
     isa        => 'ArrayRef[Str]',
     init_arg   => 'skip',
+    traits     => ['Array'],
+    handles    => { _skips => 'elements' },
     default    => sub { [] },
 );
 
