@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Prepender;
-# ABSTRACT: prepend lines at the top of your perl files
+# ABSTRACT: Prepend lines at the top of your perl files
 
 use Moose;
 use MooseX::Has::Sugar;
