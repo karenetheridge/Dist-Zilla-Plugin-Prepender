@@ -3,7 +3,7 @@ use warnings;
 
 use Test::DZil;
 use Path::Tiny;
-use Test::More tests => 31;
+use Test::More 0.88;
 
 # build fake dist
 my $tzil = Builder->from_config({
@@ -21,6 +21,7 @@ is $tzil->slurp_file(path(qw(build t support.pl))),
    "# only used during tests\nuse strict;\n1;\n",
    'file ignored according to configuration';
 
+done_testing;
 exit;
 
 sub check_top_of_file {
