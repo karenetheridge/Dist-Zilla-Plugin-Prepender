@@ -6,7 +6,6 @@ package Dist::Zilla::Plugin::Prepender;
 # ABSTRACT: Prepend lines at the top of your perl files
 
 use Moose;
-use MooseX::Has::Sugar;
 
 with 'Dist::Zilla::Role::FileMunger';
 
@@ -16,15 +15,22 @@ with 'Dist::Zilla::Role::FileMunger';
 # accept some arguments multiple times.
 sub mvp_multivalue_args { qw{ line skip } }
 
-has copyright => ( ro, default => 1 );
+has copyright => (
+    is         => 'ro',
+    default    => 1,
+);
 has _lines => (
-    ro, lazy, auto_deref,
+    is         => 'ro',
+    lazy       => 1,
+    auto_deref => 1,
     isa        => 'ArrayRef[Str]',
     init_arg   => 'line',
     default    => sub { [] },
 );
 has _skips => (
-    ro, lazy, auto_deref,
+    is         => 'ro',
+    lazy       => 1,
+    auto_deref => 1,
     isa        => 'ArrayRef[Str]',
     init_arg   => 'skip',
     default    => sub { [] },
