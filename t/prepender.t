@@ -4,6 +4,7 @@ use warnings;
 use Test::DZil;
 use Path::Tiny;
 use Test::More 0.88;
+use Test::Deep;
 
 # build fake dist
 my $tzil = Builder->from_config({
@@ -34,14 +35,20 @@ sub check_top_of_file {
 
     splice(@lines, 0, $offset) if $offset;
 
-    is( $lines[0], '#' );
-    is( $lines[1], '# This file is part of Foo' );
-    is( $lines[2], '#' );
-    is( $lines[3], '# This software is copyright (c) 2009 by foobar.' );
-    is( $lines[4], '#' );
-    is( $lines[5], '# This is free software; you can redistribute it and/or modify it under' );
-    is( $lines[6], '# the same terms as the Perl 5 programming language system itself.' );
-    is( $lines[7], '#' );
-    is( $lines[8], 'use strict;' );
-    is( $lines[9], 'use warnings;' );
+    cmp_deeply(
+        [ @lines[0..9] ],
+        [
+            '#',
+            '# This file is part of Foo',
+            '#',
+            '# This software is copyright (c) 2009 by foobar.',
+            '#',
+            '# This is free software; you can redistribute it and/or modify it under',
+            '# the same terms as the Perl 5 programming language system itself.',
+            '#',
+            'use strict;',
+            'use warnings;',
+        ],
+        "lines in $path are correct (after $offset offset lines)",
+    );
 }
