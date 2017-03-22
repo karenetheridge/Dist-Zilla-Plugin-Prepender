@@ -28,15 +28,11 @@ exit;
 sub check_top_of_file {
     my ($path, $offset) = @_;
 
-    # slurp file
-    open my $fh, '<', $path or die "cannot open '$path': $!";
-    my @lines = split /\n/, do { local $/; <$fh> };
-    close $fh;
-
+    my @lines = path($path)->lines({ count => 10 + $offset, chomp => 1 });
     splice(@lines, 0, $offset) if $offset;
 
     cmp_deeply(
-        [ @lines[0..9] ],
+        \@lines,
         [
             '#',
             '# This file is part of Foo',
