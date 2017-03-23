@@ -1,6 +1,8 @@
 Revision history for Dist::Zilla::Plugin::Prepender
 
 {{$NEXT}}
+
+2.004     2017-03-23 02:41:00+01:00 Europe/Paris
  - removed MooseX::Has::Sugar dependency
 
 2.003     2016-11-26 03:46:22+01:00 Europe/Paris

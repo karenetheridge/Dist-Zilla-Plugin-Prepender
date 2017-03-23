@@ -1,10 +1,10 @@
 # NAME
 
-Dist::Zilla::Plugin::Prepender - prepend lines at the top of your perl files
+Dist::Zilla::Plugin::Prepender - Prepend lines at the top of your perl files
 
 # VERSION
 
-version 2.003
+version 2.004
 
 # SYNOPSIS
 
